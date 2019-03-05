@@ -27,6 +27,11 @@ declare module 'react-native-slider' {
     disabled: boolean
 
     /**
+     * Allow the value to be set at a specific position when the track is pressed.
+     */
+    trackPressable?: boolean
+
+    /**
      * Initial minimum value of the slider. Default value is 0.
      */
     minimumValue?: number
@@ -35,6 +40,16 @@ declare module 'react-native-slider' {
      * Initial maximum value of the slider. Default value is 1.
      */
     maximumValue?: number
+
+    /**
+     * Minimum value the user can set the thumb to.
+     */
+    minimumSlideValue?: number
+
+    /**
+     * Maximum value the user can set the thumb to.
+     */
+    maximumSlideValue?: number
 
     /**
      * Step value of the slider. The value should be between 0 and
@@ -99,6 +114,11 @@ declare module 'react-native-slider' {
      * The style applied to the thumb.
      */
     thumbStyle?: StyleProp<ViewStyle>
+
+    /**
+     * The style applied to the image in the thumb.
+     */
+    thumbImageStyle?: StyleProp<ImageStyle>
 
     /**
      * Sets an image for the thumb.
