@@ -24,12 +24,7 @@ declare module 'react-native-slider' {
      * If true the user won't be able to move the slider.
      * Default value is false.
      */
-    disabled: boolean
-
-    /**
-     * Allow the value to be set at a specific position when the track is pressed.
-     */
-    trackPressable?: boolean
+    disabled: boolean;
 
     /**
      * Initial minimum value of the slider. Default value is 0.
@@ -143,7 +138,12 @@ declare module 'react-native-slider' {
     /**
      * Used to configure the animation parameters.  These are the same parameters in the Animated library.
      */
-    animationConfig?: SpringAnimationConfig | TimingAnimationConfig
+    animationConfig?: SpringAnimationConfig | TimingAnimationConfig;
+
+    /**
+     * Allow the value to be set at a specific position when the track is pressed.
+     */
+    trackPressable?: boolean;
   }
 
   const Slider: ComponentClass<SliderProps>

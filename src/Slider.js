@@ -77,6 +77,16 @@ export default class Slider extends PureComponent {
     maximumValue: PropTypes.number,
 
     /**
+     * Minimum value the user can set the thumb to. Default value is Number.NEGATIVE_INFINITY.
+     */
+    minimumSlideValue: PropTypes.number,
+
+    /**
+     * Maximum value the user can set the thumb to. Default value is Number.POSITIVE_INFINITY.
+     */
+    maximumSlideValue: PropTypes.number,
+
+    /**
      * Step value of the slider. The value should be between 0 and
      * (maximumValue - minimumValue). Default value is 0.
      */
@@ -146,7 +156,7 @@ export default class Slider extends PureComponent {
     /**
      * The style applied to the thumb image.
      */
-    thumbImageStyle: ViewPropTypes.style,
+    thumbImageStyle: Image.propTypes.style,
 
     /**
      * Sets an image for the thumb.
@@ -183,6 +193,8 @@ export default class Slider extends PureComponent {
     value: 0,
     minimumValue: 0,
     maximumValue: 1,
+    minimumSlideValue: Number.NEGATIVE_INFINITY,
+    maximumSlideValue: Number.POSITIVE_INFINITY,
     step: 0,
     minimumTrackTintColor: '#3f3f3f',
     maximumTrackTintColor: '#b3b3b3',
