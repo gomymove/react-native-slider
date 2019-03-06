@@ -161,7 +161,7 @@ export default class Slider extends PureComponent {
     /**
      * Sets an image for the thumb.
      */
-    thumbImage: Image.propTypes.source,
+    thumbImage: PropTypes.oneOfType([Image.propTypes.source, PropTypes.func]),
 
     /**
      * Set this to true to visually see the thumb touch rect in green.
@@ -586,6 +586,10 @@ export default class Slider extends PureComponent {
     const { thumbImage, thumbImageStyle } = this.props;
 
     if (!thumbImage) return;
+
+    if (typeof thumbImage === 'function') {
+      return thumbImage();
+    }
 
     return <Image source={thumbImage} style={thumbImageStyle} />;
   };

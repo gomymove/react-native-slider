@@ -1,5 +1,5 @@
 declare module 'react-native-slider' {
-  import { ComponentClass, PureComponent } from 'react'
+  import { ComponentClass, PureComponent, ReactNode } from 'react'
 
   import {
     ImageSourcePropType,
@@ -118,7 +118,7 @@ declare module 'react-native-slider' {
     /**
      * Sets an image for the thumb.
      */
-    thumbImage?: ImageSourcePropType
+    thumbImage?: ImageSourcePropType | () => ReactNode
 
     /**
      * Set this to true to visually see the thumb touch rect in green.
