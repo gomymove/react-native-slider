@@ -302,15 +302,18 @@ export default class Slider extends PureComponent {
             mainStyles.track,
             trackStyle,
           ]}
+          shouldRasterizeIOS
           renderToHardwareTextureAndroid
           onLayout={this._measureTrack}
         />
         <Animated.View
+        shouldRasterizeIOS
           renderToHardwareTextureAndroid
           style={[mainStyles.track, trackStyle, minimumTrackStyle]}
         />
         <Animated.View
           onLayout={this._measureThumb}
+          shouldRasterizeIOS
           renderToHardwareTextureAndroid
           style={[
             { backgroundColor: thumbTintColor },
@@ -325,6 +328,7 @@ export default class Slider extends PureComponent {
           {this._renderThumbImage()}
         </Animated.View>
         <View
+          shouldRasterizeIOS
           renderToHardwareTextureAndroid
           style={[defaultStyles.touchArea, touchOverflowStyle]}
           {...this._panResponder.panHandlers}
