@@ -79,6 +79,11 @@ declare module 'react-native-slider' {
     thumbTouchSize?: { width: number; height: number }
 
     /**
+     * Callback called when the slider has been fully measured and is ready to be shown.
+     */
+    onReady: (value: number) => void
+
+    /**
      * Callback continuously called while the user is dragging the slider.
      */
     onValueChange: (value: number) => void

@@ -122,6 +122,11 @@ export default class Slider extends PureComponent {
     }),
 
     /**
+     * Callback called when the slider has been fully measured and is ready to be shown.
+     */
+    onReady: PropTypes.func,
+
+    /**
      * Callback continuously called while the user is dragging the slider.
      */
     onValueChange: PropTypes.func,
@@ -430,6 +435,7 @@ export default class Slider extends PureComponent {
         thumbSize: this._thumbSize,
         allMeasured: true,
       });
+      this._fireChangeEvent('onReady');
     }
   };
 
