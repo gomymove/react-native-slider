@@ -281,16 +281,15 @@ export default class Slider extends PureComponent {
       outputRange: [0, containerSize.width - thumbSize.width],
       // extrapolate: 'clamp',
     });
-    const valueVisibleStyle = {};
-    if (!allMeasured) {
-      valueVisibleStyle.opacity = 0;
-    }
-
+    // const valueVisibleStyle = {};
+    // if (!allMeasured) {
+    //   valueVisibleStyle.opacity = 0;
+    // }
     const minimumTrackStyle = {
-      position: 'absolute',
+      position: "absolute",
       width: Animated.add(minimumTrackWidth, thumbSize.width / 2),
       backgroundColor: minimumTrackTintColor,
-      ...valueVisibleStyle,
+      // ...valueVisibleStyle,
     };
 
     const touchOverflowStyle = this._getTouchOverflowStyle();
@@ -312,7 +311,7 @@ export default class Slider extends PureComponent {
           onLayout={this._measureTrack}
         />
         <Animated.View
-        shouldRasterizeIOS
+          shouldRasterizeIOS
           renderToHardwareTextureAndroid
           style={[mainStyles.track, trackStyle, minimumTrackStyle]}
         />
@@ -326,7 +325,7 @@ export default class Slider extends PureComponent {
             thumbStyle,
             {
               transform: [{ translateX: thumbLeft }, { translateY: 0 }],
-              ...valueVisibleStyle,
+              // ...valueVisibleStyle,
             },
           ]}
         >
@@ -429,13 +428,19 @@ export default class Slider extends PureComponent {
     this[storeName] = size;
 
     if (this._containerSize && this._trackSize && this._thumbSize) {
-      this.setState({
-        containerSize: this._containerSize,
-        trackSize: this._trackSize,
-        thumbSize: this._thumbSize,
-        allMeasured: true,
-      });
-      this._fireChangeEvent('onReady');
+      this.setState(
+        {
+          containerSize: this._containerSize,
+          trackSize: this._trackSize,
+          thumbSize: this._thumbSize,
+          allMeasured: true,
+        },
+        () => {
+          requestAnimationFrame(() => {
+            this._fireChangeEvent("onReady");
+          });
+        }
+      );
     }
   };
 
