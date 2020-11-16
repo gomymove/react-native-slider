@@ -218,7 +218,9 @@ export default class Slider extends PureComponent {
     value: new Animated.Value(this.props.value),
   };
 
-  componentWillMount() {
+  constructor(props) {
+    super(props);
+
     this._panResponder = PanResponder.create({
       onStartShouldSetPanResponder: this._handleStartShouldSetPanResponder,
       onMoveShouldSetPanResponder: this._handleMoveShouldSetPanResponder,
@@ -230,10 +232,10 @@ export default class Slider extends PureComponent {
     });
   }
 
-  componentWillReceiveProps(nextProps) {
-    const newValue = nextProps.value;
+  componentDidUpdate(prevProps) {
+    const newValue = this.props.value;
 
-    if (this.props.value !== newValue) {
+    if (prevProps.value !== newValue) {
       if (this.props.animateTransitions) {
         this._setCurrentValueAnimated(newValue);
       } else {
